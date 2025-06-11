@@ -64,7 +64,8 @@
     "node": ">=18"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "@doinstruct:registry": "https://npm.pkg.github.com"
   },
   "homepage": "https://ai-sdk.dev/docs",
   "repository": {

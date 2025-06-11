@@ -39,7 +39,8 @@
     }
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "@doinstruct:registry": "https://npm.pkg.github.com"
   },
   "peerDependencies": {
     "svelte": "^5.0.0",
