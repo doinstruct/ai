@@ -9,7 +9,6 @@ on:
       - '.changeset/**'
       - '.github/workflows/release.yml'
   workflow_dispatch:
-    release:
 
 permissions:
   contents: read
