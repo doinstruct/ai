@@ -36,9 +36,25 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
-      - name: Publish
-        # run: npm publish ./build/dist --provenance
-        run: pnpm ci:release
+
+      - name: Rename package to @doinstruct/ai-sdk-mistral
+        run: |
+          jq '.name = "@doinstruct/ai-sdk-mistral"' packages/mistral/package.json > packages/mistral/package.tmp.json
+          mv packages/mistral/package.tmp.json packages/mistral/package.json
+
+      - name: Rename package to @doinstruct/ai-sdk-ai
+        run: |
+          jq '.name = "@doinstruct/ai-sdk-ai"' packages/ai/package.json > packages/ai/package.tmp.json
+          mv packages/ai/package.tmp.json packages/ai/package.json
+
+      - name: Publish mistral package
+        run: cd packages/mistral && npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          npm_config_registry: 'https://npm.pkg.github.com/@doinstruct'
+
+      - name: Publish ai package
+        run: cd packages/ai && npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           npm_config_registry: 'https://npm.pkg.github.com/@doinstruct'
