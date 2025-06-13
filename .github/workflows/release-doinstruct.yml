@@ -37,7 +37,8 @@ jobs:
         run: pnpm i
 
       - name: Build packages
-        run: pnpm build
+        #run: pnpm build
+        run: pnpm build --filter=ai --filter=@ai-sdk/mistral
 
       - name: Rename package to @doinstruct/ai-sdk-mistral
         run: |
