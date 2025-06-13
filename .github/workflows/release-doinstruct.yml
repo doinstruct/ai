@@ -56,11 +56,11 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           npm_config_registry: 'https://npm.pkg.github.com/@doinstruct'
 
-      #- name: Publish ai package
-      #  run: cd packages/ai && npm publish --access public --provenance
-      #  env:
-      #    NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #    npm_config_registry: 'https://npm.pkg.github.com/@doinstruct'
+      - name: Publish ai package
+        run: cd packages/ai && npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          npm_config_registry: 'https://npm.pkg.github.com/@doinstruct'
 
       # - name: Create Release Pull Request or Publish to npm
       #   id: changesets
